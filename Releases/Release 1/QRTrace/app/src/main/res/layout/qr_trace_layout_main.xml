@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f0f0f0">
+    <!--<ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical"
+        android:fillViewport="true">-->
+    <FrameLayout
+    android:id="@+id/camera_preview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentTop="true"/>
+    <!--</ScrollView>
+
+    <SurfaceView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/draw_view"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"/>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/qr_text_view"
+        android:textColor="#FF0000"
+        android:text="Number of squares: ?"
+        android:layout_gravity="center_horizontal|center_vertical"/>
+
+</RelativeLayout>
