@@ -1,0 +1,43 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/camera_preview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_below="@+id/textView_debug"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detect Camera"
+        android:id="@+id/button_detect_camera"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/button_show_surfaceview" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="text"
+        android:id="@+id/textView_debug"
+        android:layout_alignBottom="@+id/button_detect_camera"
+        android:layout_toEndOf="@+id/button_detect_camera" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show simple SurfaceView"
+        android:id="@+id/button_show_surfaceview"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>
