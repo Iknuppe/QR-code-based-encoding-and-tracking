@@ -1,0 +1,4 @@
+http://code.tutsplus.com/tutorials/augmented-reality-getting-started-on-android--mobile-4457
+https://code.google.com/p/andar/
+http://stackoverflow.com/questions/11544877/really-confused-with-setpreviewcallback-in-android-need-advice
+OpenCV?
