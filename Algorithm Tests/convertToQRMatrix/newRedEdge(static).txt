@@ -1,0 +1,223 @@
+
+  /* -------------------------------------------------------------------------*/
+  private static Coordinate findEdgeLOU(int x_pos, int y_pos, Bitmap qr_image)
+  {
+    /* Links Oben Unten */
+    //System.out.println("Links Oben Unten...");
+    
+    int x_slide = x_pos;
+    int y_slide = y_pos;
+    int potential_finish_flag = 0;
+    int successive = 4;
+    //int image_length = qr_image.getWidth();
+    int image_height = qr_image.getHeight();
+
+    
+    while(true)
+    {
+      if((x_slide - successive) >= 0 && checkIfBlack(qr_image.getPixel(x_slide - successive, y_slide)))//go left
+      {
+        potential_finish_flag = 0;
+        x_slide -= successive;
+      }
+      else if((y_slide - successive) >= 0 && checkIfBlack(qr_image.getPixel(x_slide, y_slide - successive))) //go up
+      {
+        y_slide -= successive;
+        if(potential_finish_flag == 1)
+        {
+          if(successive > 1)
+          {
+            successive /= 2;
+            potential_finish_flag = 0;
+          }
+          else
+          {
+            break;
+          }
+        }
+      }
+      else if((y_slide + 1) <= (image_height - 1) && checkIfBlack(qr_image.getPixel(x_slide, y_slide + 1)) && successive <= 1) //go down
+      {
+        potential_finish_flag = 1;
+        y_slide++;
+      }
+      else
+      {
+        if(successive > 1)
+        {
+          successive /= 2;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+
+    return new Coordinate(x_slide, y_slide);
+  }
+
+  /* -------------------------------------------------------------------------*/
+  private static Coordinate findEdgeORL(int x_pos, int y_pos, Bitmap qr_image)
+  {
+    /* Oben Rechts Links */
+    //System.out.println("Oben Rechts Links...");
+    
+    int x_slide = x_pos;
+    int y_slide = y_pos;
+    int potential_finish_flag = 0;
+    int successive = 4;
+    int image_length = qr_image.getWidth();
+    //int image_height = qr_image.getHeight();
+    
+    while(true)
+    {
+      if((y_slide - successive) >= 0 && checkIfBlack(qr_image.getPixel(x_slide, y_slide - successive))) //go up
+      {
+        potential_finish_flag = 0;
+        y_slide -= successive;
+      }
+      else if((x_slide + successive) <= (image_length - 1) && checkIfBlack(qr_image.getPixel(x_slide + successive, y_slide))) //go right
+      {
+        x_slide += successive;
+        if(potential_finish_flag == 1)
+        {
+          if(successive > 1)
+          {
+            successive /= 2;
+            potential_finish_flag = 0;
+          }
+          else
+          {
+            break;
+          }
+        }
+      }
+      else if((x_slide - 1) >= 0 && checkIfBlack(qr_image.getPixel(x_slide - 1, y_slide))  && successive <= 1) //go left
+      {
+        potential_finish_flag = 1;
+        x_slide--;
+      }
+      else
+      {
+        if(successive > 1)
+        {
+          successive /= 2;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+
+     return new Coordinate(x_slide, y_slide);
+  }
+
+  /* -------------------------------------------------------------------------*/
+  private static Coordinate findEdgeULR(int x_pos, int y_pos, Bitmap qr_image)
+  {
+    /* Unten Links Rechts */
+    //System.out.println("Unten Links Rechts...");
+    
+    int x_slide = x_pos;
+    int y_slide = y_pos;
+    int potential_finish_flag = 0;
+    int successive = 4;
+    int image_length = qr_image.getWidth();
+    int image_height = qr_image.getHeight();
+
+    while(true)
+    {
+      if((y_slide + successive) <= (image_height - 1) && checkIfBlack(qr_image.getPixel(x_slide, y_slide + successive))) //go down
+      {
+        potential_finish_flag = 0;
+        y_slide += successive;
+      }else if((x_slide - successive) >= 0 && checkIfBlack(qr_image.getPixel(x_slide - successive, y_slide))) //go left
+      {
+        x_slide -= successive;
+        if(potential_finish_flag == 1)
+        {
+          if(successive > 1)
+          {
+            successive /= 2;
+            potential_finish_flag = 0;
+          }
+          else
+          {
+            break;
+          }
+        }
+      }else if((x_slide + 1) <= (image_length - 1) && checkIfBlack(qr_image.getPixel(x_slide + 1, y_slide))  && successive <= 1) //go right
+      {
+        potential_finish_flag = 1;
+        x_slide++;
+      }else
+      {
+        if(successive > 1)
+        {
+          successive /= 2;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+
+    return new Coordinate(x_slide, y_slide);
+  }
+
+  /* -------------------------------------------------------------------------*/
+  private static Coordinate findEdgeRUO(int x_pos, int y_pos, Bitmap qr_image)
+  {
+    /* Rechts Unten Oben */
+    //System.out.println("Rechts Unten Oben...");
+    
+    int x_slide = x_pos;
+    int y_slide = y_pos;
+    int potential_finish_flag = 0;
+    int successive = 4;
+    int image_length = qr_image.getWidth();
+    int image_height = qr_image.getHeight();
+    
+    while(true)
+    {
+      if((x_slide + successive) <= (image_length - 1) && checkIfBlack(qr_image.getPixel(x_slide + successive, y_slide))) //go right
+      {
+        potential_finish_flag = 0;
+        x_slide += successive;
+      }else if((y_slide + successive) <= (image_height - 1) && checkIfBlack(qr_image.getPixel(x_slide, y_slide + successive))) //go down
+      {
+        y_slide += successive;
+        if(potential_finish_flag == 1)
+        {
+          if(successive > 1)
+          {
+            successive /= 2;
+            potential_finish_flag = 0;
+          }
+          else
+          {
+            break;
+          }
+        }
+      }else if((y_slide - 1) >= 0 && checkIfBlack(qr_image.getPixel(x_slide, y_slide - 1))  && successive <= 1) // go up
+      {
+        potential_finish_flag = 1;
+        y_slide--;
+      }else
+      {
+        if(successive > 1)
+        {
+          successive /= 2;
+        }
+        else
+        {
+          break;
+        }
+      }
+    }
+
+    return new Coordinate(x_slide, y_slide);
+  }

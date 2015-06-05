@@ -1,0 +1,145 @@
+  public static Coordinate findSquaresLOU(int x_pos, int y_pos, int[][] image_array)
+  {
+    //System.out.println("testing X: " + horizontal_counter + " Y: " + vertical_counter);
+    /* -----------------------------------------------------------------------*/
+    /* Links Oben Unten */
+    //System.out.println("Links Oben Unten...");
+    
+    int x_slide = x_pos;
+    int y_slide = y_pos;
+    int potential_finish_flag = 0;
+
+    while(true)
+    {
+      if(x_slide > 0 && image_array[y_slide][x_slide - 1] != 1)//go left
+      {
+        potential_finish_flag = 0;
+        x_slide--;
+      }else if(y_slide > 0 && image_array[y_slide - 1][x_slide] != 1) //go up
+      {
+        y_slide--;
+        if(potential_finish_flag == 1)
+        {
+          break;
+        }
+      }else if(y_slide < (image_array.length - 1) && image_array[y_slide + 1][x_slide] != 1) //go down
+      {
+        potential_finish_flag = 1;
+        y_slide++;
+      }else
+      {
+        break;//successive
+      }
+    }
+
+    return new Coordinate(x_slide, y_slide);
+  }
+
+  public static Coordinate findSquaresORL(int x_pos, int y_pos, int[][] image_array)
+  {
+
+    /* -----------------------------------------------------------------------*/
+    /* Oben Rechts Links */
+    //System.out.println("Oben Rechts Links...");
+    int x_slide = x_pos;
+    int y_slide = y_pos;
+    int potential_finish_flag = 0;
+    //auf eof/grenzen prüfen
+    
+    while(true)
+    {
+      if(y_slide > 0 && image_array[y_slide - 1][x_slide] != 1) //go up
+      {
+        potential_finish_flag = 0;
+        y_slide--;
+      }else if(x_slide < (image_array[0].length - 1) && image_array[y_slide][x_slide + 1] != 1) //go right
+      {
+        x_slide++;
+        if(potential_finish_flag == 1)
+        {
+          break;
+        }
+      }else if(x_slide > 0 && image_array[y_slide][x_slide - 1] != 1) //go left
+      {
+        potential_finish_flag = 1;
+        x_slide--;
+      }else
+      {
+        break;
+      }
+    }
+
+     return new Coordinate(x_slide, y_slide);
+  }
+
+  public static Coordinate findSquaresULR(int x_pos, int y_pos, int[][] image_array)
+  {
+
+    /* -----------------------------------------------------------------------*/
+    /* Unten Links Rechts */
+    //System.out.println("Unten Links Rechts...");
+    int x_slide = x_pos;
+    int y_slide = y_pos;
+    int potential_finish_flag = 0;
+
+    while(true)
+    {
+      if(y_slide < (image_array.length - 1) && image_array[y_slide + 1][x_slide] != 1) //go down
+      {
+        potential_finish_flag = 0;
+        y_slide++;
+      }else if(x_slide > 0 && image_array[y_slide][x_slide - 1] != 1) //go left
+      {
+        x_slide--;
+        if(potential_finish_flag == 1)
+        {
+          break;
+        }
+      }else if(x_slide < (image_array[0].length - 1) && image_array[y_slide][x_slide + 1] != 1) //go right
+      {
+        potential_finish_flag = 1;
+        x_slide++;
+      }else
+      {
+        break;
+      }
+    }
+
+    return new Coordinate(x_slide, y_slide);
+  }
+
+  public static Coordinate findSquaresRUO(int x_pos, int y_pos, int[][] image_array)
+  {
+
+    /* -----------------------------------------------------------------------*/
+    /* Rechts Unten Oben */
+    //System.out.println("Rechts Unten Oben...");
+    int x_slide = x_pos;
+    int y_slide = y_pos;
+    int potential_finish_flag = 0;
+    
+    while(true)
+    {//System.out.println("xslide: "+x_slide+" yslide: "+y_slide);
+      if(x_slide < (image_array[0].length - 1) && image_array[y_slide][x_slide + 1] != 1) //go right 
+      {
+        potential_finish_flag = 0;
+        x_slide++;
+      }else if(y_slide < (image_array.length - 1) && image_array[y_slide + 1][x_slide] != 1) //go down 
+      {
+        y_slide++;
+        if(potential_finish_flag == 1)
+        {
+          break;
+        }
+      }else if(y_slide > 0 && image_array[y_slide - 1][x_slide] != 1) // go up 
+      {
+        potential_finish_flag = 1;
+        y_slide--;
+      }else
+      {
+        break;
+      }
+    }
+
+    return new Coordinate(x_slide, y_slide);
+  }
