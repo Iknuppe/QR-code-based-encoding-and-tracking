@@ -72,6 +72,10 @@ public class QRTrace extends ActionBarActivity
         android_camera.setDisplayOrientation(90);
       }
 
+      Camera.Parameters camera_params = android_camera.getParameters();
+      camera_params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+      android_camera.setParameters(camera_params);
+
       camera_preview = new CameraPreview(this, android_camera);
       camera_draw = new CameraView(this);
 

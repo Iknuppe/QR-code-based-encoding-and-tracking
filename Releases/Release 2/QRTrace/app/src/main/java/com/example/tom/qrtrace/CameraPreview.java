@@ -215,9 +215,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     int new_area;
 
     Camera.Size result=null;
-    Camera.Parameters p = android_camera.getParameters();
+    Camera.Parameters camera_parameters = android_camera.getParameters();
 
-    for(Camera.Size size : p.getSupportedPreviewSizes())
+    for(Camera.Size size : camera_parameters.getSupportedPreviewSizes())
     {
       if(size.width <= width && size.height <= height)
       {
